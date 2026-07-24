@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distressed-aircraft signal recon · Jenny Cotie Kangas</title>
+<meta name="description" content="A public-data lead signal for a company that acquires and rebuilds aircraft. Scoped, sourced, and validated before a line of code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --limestone:#FCFBF8; --surface:#FFFFFF;
+    --ink:#2A1E14; --ink-soft:#574B39; --ink-faint:#8A7C68;
+    --clay:#B5512F; --line:#E9E3D8;
+    --serif:'Newsreader',Georgia,serif;
+    --sans:'Hanken Grotesk',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--limestone);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+  a{color:var(--clay);text-decoration:none;font-weight:600;border-bottom:1px solid transparent;transition:border-color .15s}
+  a:hover{border-color:var(--clay)}
+  .back{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:40px 0 0}
+  header{padding:22px 0 30px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:500;margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.5vw,44px);line-height:1.08;letter-spacing:-.01em}
+  .sub{font-size:18px;color:var(--ink-soft);margin-top:14px}
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:var(--serif);font-weight:500;font-size:14px;letter-spacing:.03em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:16px}
+  p{font-size:17px;color:var(--ink-soft);margin-bottom:16px}
+  strong{color:var(--ink);font-weight:600}
+  .pull{font-family:var(--serif);font-size:21px;color:var(--ink);font-style:italic;padding-left:18px;border-left:2px solid var(--clay);margin:8px 0}
+  ul{margin:0 0 16px 20px}
+  li{font-size:16px;color:var(--ink-soft);margin-bottom:8px}
+  footer{padding:34px 0 70px;color:var(--ink-faint);font-size:13px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./">&larr; Jenny Cotie Kangas</a>
+
+  <header>
+    <div class="eyebrow">Client build · signal recon</div>
+    <h1>A distressed-aircraft lead signal, from public data</h1>
+    <p class="sub">Built for a company that acquires and rebuilds aircraft. Scoped, sourced, and validated before a line of code.</p>
+  </header>
+
+  <section>
+    <h2>The problem</h2>
+    <p>The client buys aircraft, rebuilds them, and returns them to service. Their best acquisition targets are distressed airframes, but there is no feed for "a plane just got damaged." They needed an early, reliable signal for it, drawn from public data, with no scraping infrastructure and no guesswork.</p>
+    <p>There is a second angle in the same event. When a disabled aircraft closes a runway, the airport is losing real money by the hour. That gives the outreach a reason to exist and a number to anchor it.</p>
+  </section>
+
+  <section>
+    <h2>The approach</h2>
+    <p>Rather than invent a data source, I reverse-engineered the signal from one that already exists. When an aircraft is disabled on a runway, the FAA issues a NOTAM, and the wording for it is mandated. That makes it a deterministic signal with a low false-positive rate, which is exactly what you want a lead engine keyed on.</p>
+    <p>The work was to figure out which official feeds actually carry that signal, which do not, and how to measure the event honestly. The duration has to come from the cancellation of the notice, not its estimated end time, because the estimate is a guess and the duration is the whole pitch.</p>
+    <div class="pull">The estimate is a guess. The cancellation is the truth. Size the lead off the truth.</div>
+  </section>
+
+  <section>
+    <h2>The build</h2>
+    <p>A monitoring shape, not a scraper. One living record per event, keyed on the notice id: airport, runway, the clock start, the clock stop, the computed duration, and a lead status. It filters for the mandated disabled-aircraft wording against the runway field, so taxiway events that do not close a runway are excluded. When a closure crosses a duration threshold, it generates a one-page incident brief, sized off the real cancellation timestamp. Pure API plus pattern matching. No machine learning, no scraping stack, free official sources.</p>
+    <p>People-data is suppressed at ingest. The record is the event, airport, runway, time, and duration, never the operator or the individuals involved.</p>
+  </section>
+
+  <section>
+    <h2>What it shows</h2>
+    <p>The path came back a clear go: the signal is reachable through official, free channels, and the expected volume is on the order of 50 to 150 qualifying multi-hour closures a year nationally, which is a workable outbound cadence.</p>
+    <p>The part I am most willing to be judged on is a source that <strong>did not survive</strong>. The first research pass leaned on a convenient endpoint that promised free, no-account access. I checked it against the live service, and it did not exist. It returned a 404. I removed it and rebuilt the path on the sources that are real, which turned out to be simpler. A recon that hands a client a source that isn't there is worse than no recon. Validating every source against the live service before it became load-bearing is the point, not a footnote.</p>
+  </section>
+
+  <footer>
+    Jenny Cotie Kangas · Jennifer Neuharth · Whiterock Road · <a href="mailto:jenny@whiterockroad.org">jenny@whiterockroad.org</a>
+  </footer>
+</div>
+</body>
+</html>

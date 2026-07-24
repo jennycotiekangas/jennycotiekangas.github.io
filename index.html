@@ -104,6 +104,22 @@
         <a href="https://github.com/jennycotiekangas/reqcheck">View the code and sample output &rarr;</a>
       </div>
     </div>
+    <div class="build">
+      <div class="top">
+        <h3>Distressed-aircraft signal recon</h3>
+        <span class="live">Client build</span>
+      </div>
+      <div class="oneline">A public-data lead signal for a company that acquires and rebuilds aircraft. Scoped, sourced, and validated before a line of code.</div>
+      <div class="grid">
+        <div><div class="k">Problem</div><p class="v">The client needs an early signal for distressed airframes, from public data, with no scraping stack and no guesswork.</p></div>
+        <div><div class="k">Approach</div><p class="v">Reverse-engineer the signal from FAA notices already published when an aircraft disables a runway. Deterministic wording, low false positives.</p></div>
+        <div><div class="k">Build</div><p class="v">A monitor keyed on the notice id: airport, runway, real duration from the cancellation, and a one-page incident brief when a closure crosses a threshold.</p></div>
+        <div><div class="k">Outcome</div><p class="v">A verified go, ~50 to 150 qualifying events a year. I caught and cut a convenient source that turned out not to exist before it became load-bearing.</p></div>
+      </div>
+      <div class="links">
+        <a href="./notam-recon.html">Read the approach &rarr;</a>
+      </div>
+    </div>
     <p class="more">More builds are on the way.</p>
   </section>
 
