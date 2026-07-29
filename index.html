@@ -9,136 +9,153 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --limestone:#FCFBF8; --surface:#FFFFFF;
-    --ink:#2A1E14; --ink-soft:#574B39; --ink-faint:#8A7C68;
-    --clay:#B5512F; --clay-soft:#C96F4A;
-    --line:#E9E3D8;
-    --serif:'Newsreader',Georgia,serif;
-    --sans:'Hanken Grotesk',system-ui,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--limestone);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:500}
+:root{
+--limestone:#FCFBF8; --surface:#FFFFFF;
+--ink:#2A1E14; --ink-soft:#574B39; --ink-faint:#8A7C68;
+--clay:#B5512F; --clay-soft:#C96F4A;
+--line:#E9E3D8;
+--serif:'Newsreader',Georgia,serif;
+--sans:'Hanken Grotesk',system-ui,sans-serif;
+--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--limestone);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);font-weight:500}
 
-  header{padding:88px 0 40px}
-  h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,8vw,68px);line-height:1.02;letter-spacing:-.01em}
-  .altname{font-family:var(--mono);font-size:13px;color:var(--ink-faint);margin-top:14px;letter-spacing:.02em}
-  .role{font-size:18px;color:var(--ink-soft);margin-top:20px;font-weight:500}
-  .tag{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);margin-top:16px}
+header{padding:88px 0 40px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,8vw,68px);line-height:1.02;letter-spacing:-.01em}
+.altname{font-family:var(--mono);font-size:13px;color:var(--ink-faint);margin-top:14px;letter-spacing:.02em}
+.role{font-size:18px;color:var(--ink-soft);margin-top:20px;font-weight:500}
+.tag{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);margin-top:16px}
 
-  section{padding:34px 0;border-top:1px solid var(--line)}
-  h2{font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.02em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:20px;font-feature-settings:"smcp"}
-  p{font-size:17px;color:var(--ink-soft);margin-bottom:18px}
-  p.lead{font-size:19px;color:var(--ink)}
-  strong{color:var(--ink);font-weight:600}
+section{padding:34px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.02em;color:var(--ink-faint);text-transform:uppercase;margin-bottom:20px;font-feature-settings:"smcp"}
+p{font-size:17px;color:var(--ink-soft);margin-bottom:18px}
+p.lead{font-size:19px;color:var(--ink)}
+strong{color:var(--ink);font-weight:600}
 
-  .method{display:flex;flex-direction:column;gap:2px;font-family:var(--serif);font-size:20px;color:var(--ink);margin:6px 0 4px;padding-left:18px;border-left:2px solid var(--clay)}
+.method{display:flex;flex-direction:column;gap:2px;font-family:var(--serif);font-size:20px;color:var(--ink);margin:6px 0 4px;padding-left:18px;border-left:2px solid var(--clay)}
 
-  .build{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin-top:6px}
-  .build .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .build h3{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ink)}
-  .build .live{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);border:1px solid var(--clay);border-radius:20px;padding:3px 10px}
-  .build .oneline{font-size:16px;color:var(--ink-soft);margin:8px 0 18px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px}
-  .grid .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
-  .grid .v{font-size:15px;color:var(--ink-soft);margin:0}
-  .build .links{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;gap:18px;flex-wrap:wrap}
-  a{color:var(--clay);text-decoration:none;font-weight:600;border-bottom:1px solid transparent;transition:border-color .15s}
-  a:hover{border-color:var(--clay)}
-  .more{font-size:15px;color:var(--ink-faint);margin-top:18px;font-style:italic;font-family:var(--serif)}
+.build{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin-top:6px}
+.build .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.build h3{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--ink)}
+.build .live{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);border:1px solid var(--clay);border-radius:20px;padding:3px 10px}
+.build .oneline{font-size:16px;color:var(--ink-soft);margin:8px 0 18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px}
+.grid .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+.grid .v{font-size:15px;color:var(--ink-soft);margin:0}
+.build .links{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);display:flex;gap:18px;flex-wrap:wrap}
+a{color:var(--clay);text-decoration:none;font-weight:600;border-bottom:1px solid transparent;transition:border-color .15s}
+a:hover{border-color:var(--clay)}
+.more{font-size:15px;color:var(--ink-faint);margin-top:18px;font-style:italic;font-family:var(--serif)}
 
-  .contact a{display:inline-block;margin-right:22px;font-size:16px}
-  footer{padding:40px 0 72px;color:var(--ink-faint);font-size:13px;font-family:var(--mono)}
+.contact a{display:inline-block;margin-right:22px;font-size:16px}
+footer{padding:40px 0 72px;color:var(--ink-faint);font-size:13px;font-family:var(--mono)}
 
-  @media(max-width:560px){.grid{grid-template-columns:1fr}header{padding:64px 0 32px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}header{padding:64px 0 32px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header>
-    <div class="eyebrow">Forward Deployed AI Engineer</div>
-    <h1>Jenny Cotie&nbsp;Kangas</h1>
-    <div class="altname">legal name: Jennifer Neuharth · github.com/jennycotiekangas</div>
-    <div class="role">Founder, Whiterock Road · Applied AI, shipped where it is hardest to get right</div>
-    <div class="tag">When others ask "What if?", I answer "How."</div>
-  </header>
+<header>
+<div class="eyebrow">Forward Deployed AI Engineer</div>
+<h1>Jenny Cotie&nbsp;Kangas</h1>
+<div class="altname">legal name: Jennifer Neuharth · github.com/jennycotiekangas</div>
+<div class="role">Founder, Whiterock Road · Applied AI, shipped where it is hardest to get right</div>
+<div class="tag">When others ask "What if?", I answer "How."</div>
+</header>
 
-  <section>
-    <h2>The short version</h2>
-    <p class="lead">I found out I was a Forward Deployed Engineer by building the system that defines one.</p>
-    <p>A large enterprise technology company set out to stand up an FDE function for a role the market could not agree on. I built the multi-agent system that mapped the whole market and defined the role, then read what it produced and recognized myself in it. The method was the answer.</p>
-    <p>That is the job. Go inside the problem, understand it on the customer's terms, and build and ship the thing that solves it. Every system I build runs the same method:</p>
-    <div class="method">
-      <span>Establish where the customer actually is.</span>
-      <span>Establish their version of good.</span>
-      <span>Reverse-engineer the path between.</span>
-    </div>
-    <p style="margin-top:18px">And into every build, a layer that never invents a person, a signal, or a number. For a decision that matters, an unsourced answer is worthless.</p>
-  </section>
+<section>
+<h2>The short version</h2>
+<p class="lead">I found out I was a Forward Deployed Engineer by building the system that defines one.</p>
+<p>A large enterprise technology company set out to stand up an FDE function for a role the market could not agree on. I built the multi-agent system that mapped the whole market and defined the role, then read what it produced and recognized myself in it. The method was the answer.</p>
+<p>That is the job. Go inside the problem, understand it on the customer's terms, and build and ship the thing that solves it. Every system I build runs the same method:</p>
+<div class="method">
+<span>Establish where the customer actually is.</span>
+<span>Establish their version of good.</span>
+<span>Reverse-engineer the path between.</span>
+</div>
+<p style="margin-top:18px">And into every build, a layer that never invents a person, a signal, or a number. For a decision that matters, an unsourced answer is worthless.</p>
+</section>
 
-  <section>
-    <h2>Why the pairing is rare</h2>
-    <p>I am not a traditional software engineer, and I do not pretend to be. What I bring is the combination the role is built on. I have shipped agents into production, and I have spent years on the post-sales side of enterprise implementation, including global rollouts with Big Four partners. Most people have done one. The value is doing both: the most technically credible person in the business review, and the most commercially grounded person in the design session.</p>
-  </section>
+<section>
+<h2>Why the pairing is rare</h2>
+<p>I am not a traditional software engineer, and I do not pretend to be. What I bring is the combination the role is built on. I have shipped agents into production, and I have spent years on the post-sales side of enterprise implementation, including global rollouts with Big Four partners. Most people have done one. The value is doing both: the most technically credible person in the business review, and the most commercially grounded person in the design session.</p>
+</section>
 
-  <section>
-    <h2>Selected builds</h2>
-    <div class="build">
-      <div class="top">
-        <h3>ReqCheck</h3>
-        <span class="live">Live</span>
-      </div>
-      <div class="oneline">An audit engine for public job postings. It crawls a company's live reqs, checks them, and states what it can prove.</div>
-      <div class="grid">
-        <div><div class="k">Problem</div><p class="v">A large TA org cannot see its own posting health: how many are live, which are broken or non-compliant, whether search and AI engines can even read them.</p></div>
-        <div><div class="k">Approach</div><p class="v">An audit is mostly facts, not opinions. Split the work by fact versus judgment: a deterministic engine proves what it can, an interpretive layer handles the rest.</p></div>
-        <div><div class="k">Build</div><p class="v">Standard-library Python. Detects the ATS, maps every posting, runs deterministic checks, and clusters findings to the upstream config cause. Every finding cites a req and a URL.</p></div>
-        <div><div class="k">Outcome</div><p class="v">Run free against thousands of live reqs across six ATS platforms. On a Fortune 500 medical-technology company's ~1,130 reqs it surfaced real, verifiable errors and traced repeated ones to single fixes.</p></div>
-      </div>
-      <div class="links">
-        <a href="https://github.com/jennycotiekangas/reqcheck">View the code and sample output &rarr;</a>
-      </div>
-    </div>
-    <div class="build">
-      <div class="top">
-        <h3>Distressed-aircraft signal recon</h3>
-        <span class="live">Client build</span>
-      </div>
-      <div class="oneline">A public-data lead signal for a company that acquires and rebuilds aircraft. Scoped, sourced, and validated before a line of code.</div>
-      <div class="grid">
-        <div><div class="k">Problem</div><p class="v">The client needs an early signal for distressed airframes, from public data, with no scraping stack and no guesswork.</p></div>
-        <div><div class="k">Approach</div><p class="v">Reverse-engineer the signal from FAA notices already published when an aircraft disables a runway. Deterministic wording, low false positives.</p></div>
-        <div><div class="k">Build</div><p class="v">A monitor keyed on the notice id: airport, runway, real duration from the cancellation, and a one-page incident brief when a closure crosses a threshold.</p></div>
-        <div><div class="k">Outcome</div><p class="v">A verified go, ~50 to 150 qualifying events a year. I caught and cut a convenient source that turned out not to exist before it became load-bearing.</p></div>
-      </div>
-      <div class="links">
-        <a href="./notam-recon.html">Read the approach &rarr;</a>
-      </div>
-    </div>
-    <p class="more">More builds are on the way.</p>
-  </section>
+<section>
+<h2>Selected builds</h2>
+<div class="build">
+<div class="top">
+<h3>ReqCheck</h3>
+<span class="live">Live</span>
+</div>
+<div class="oneline">An audit engine for public job postings. It crawls a company's live reqs, checks them, and states what it can prove.</div>
+<div class="grid">
+<div><div class="k">Problem</div><p class="v">A large TA org cannot see its own posting health: how many are live, which are broken or non-compliant, whether search and AI engines can even read them.</p></div>
+<div><div class="k">Approach</div><p class="v">An audit is mostly facts, not opinions. Split the work by fact versus judgment: a deterministic engine proves what it can, an interpretive layer handles the rest.</p></div>
+<div><div class="k">Build</div><p class="v">Standard-library Python. Detects the ATS, maps every posting, runs deterministic checks, and clusters findings to the upstream config cause. Every finding cites a req and a URL.</p></div>
+<div><div class="k">Outcome</div><p class="v">Run free against thousands of live reqs across six ATS platforms. On a Fortune 500 medical-technology company's ~1,130 reqs it surfaced real, verifiable errors and traced repeated ones to single fixes.</p></div>
+</div>
+<div class="links">
+<a href="https://github.com/jennycotiekangas/reqcheck">View the code and sample output &rarr;</a>
+</div>
+</div>
+<div class="build">
+<div class="top">
+<h3>Distressed-aircraft signal recon</h3>
+<span class="live">Client build</span>
+</div>
+<div class="oneline">A public-data lead signal for a company that acquires and rebuilds aircraft. Scoped, sourced, and validated before a line of code.</div>
+<div class="grid">
+<div><div class="k">Problem</div><p class="v">The client needs an early signal for distressed airframes, from public data, with no scraping stack and no guesswork.</p></div>
+<div><div class="k">Approach</div><p class="v">Reverse-engineer the signal from FAA notices already published when an aircraft disables a runway. Deterministic wording, low false positives.</p></div>
+<div><div class="k">Build</div><p class="v">A monitor keyed on the notice id: airport, runway, real duration from the cancellation, and a one-page incident brief when a closure crosses a threshold.</p></div>
+<div><div class="k">Outcome</div><p class="v">A verified go, ~50 to 150 qualifying events a year. I caught and cut a convenient source that turned out not to exist before it became load-bearing.</p></div>
+</div>
+<div class="links">
+<a href="./notam-recon.html">Read the approach &rarr;</a>
+</div>
+</div>
+<div class="build">
+<div class="top">
+<h3>Use AI to Run Your Job Search</h3>
+<span class="live">Live · public</span>
+</div>
+<div class="oneline">The same method, turned on the job search itself. A free playbook that makes your version of good explicit, then reverse-engineers the path to the right role.</div>
+<div class="grid">
+<div><div class="k">Problem</div><p class="v">The roles worth wanting increasingly have no agreed title, and the search becomes a defeating, title-driven grind. You cannot search a board for a title the market has not named.</p></div>
+<div><div class="k">Approach</div><p class="v">Run the search like a build. Make the seeker's version of good explicit, ground it, and reverse-engineer the path, the same method I run for enterprise customers, pointed at the candidate.</p></div>
+<div><div class="k">Build</div><p class="v">A single self-contained page. One starter prompt hands any AI the whole system: a grounding doc and career blueprint, a daily agent that scores roles by fit against an anchored rubric, one-size-fits-one resumes, an application pack, and a weekly loop that sharpens as you go.</p></div>
+<div><div class="k">Outcome</div><p class="v">A working system a stranger runs for free, and my own daily search, now running two shapes of good at once. Built in public and adapted freely.</p></div>
+</div>
+<div class="links">
+<a href="https://jennycotiekangas.github.io/ai-job-search/">Use the playbook &rarr;</a>
+<a href="https://github.com/jennycotiekangas/ai-job-search">View the code &rarr;</a>
+</div>
+</div>
+<p class="more">More builds are on the way.</p>
+</section>
 
-  <section>
-    <h2>The method is the story</h2>
-    <p>In 2020 a head injury erased my memory. I rebuilt my house and my brain in the same place, with my hands, on a street called Whiterock Road. I came to AI without the sci-fi story. I saw a tool and started with the friction. I do not carry the inherited library of how a problem is supposed to be solved, so in a space the market has not finished defining, I am not guessing at a playbook. I am building the right one. The longer version is at <a href="https://whiterockroad.org">whiterockroad.org</a>.</p>
-  </section>
+<section>
+<h2>The method is the story</h2>
+<p>In 2020 a head injury erased my memory. I rebuilt my house and my brain in the same place, with my hands, on a street called Whiterock Road. I came to AI without the sci-fi story. I saw a tool and started with the friction. I do not carry the inherited library of how a problem is supposed to be solved, so in a space the market has not finished defining, I am not guessing at a playbook. I am building the right one. The longer version is at <a href="https://whiterockroad.org">whiterockroad.org</a>.</p>
+</section>
 
-  <section class="contact">
-    <h2>Reach me</h2>
-    <a href="mailto:jenny@whiterockroad.org">jenny@whiterockroad.org</a>
-    <a href="https://www.linkedin.com/in/jcotie">LinkedIn</a>
-    <a href="https://github.com/jennycotiekangas">GitHub</a>
-    <a href="https://whiterockroad.org">Whiterock Road</a>
-  </section>
+<section class="contact">
+<h2>Reach me</h2>
+<a href="mailto:jenny@whiterockroad.org">jenny@whiterockroad.org</a>
+<a href="https://www.linkedin.com/in/jcotie">LinkedIn</a>
+<a href="https://github.com/jennycotiekangas">GitHub</a>
+<a href="https://whiterockroad.org">Whiterock Road</a>
+</section>
 
-  <footer>
-    Jenny Cotie Kangas · Jennifer Neuharth · Burnsville, MN
-  </footer>
+<footer>
+Jenny Cotie Kangas · Jennifer Neuharth · Burnsville, MN
+</footer>
 
 </div>
 </body>
